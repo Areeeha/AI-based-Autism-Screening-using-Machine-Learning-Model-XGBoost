@@ -1,0 +1,74 @@
+# 🧠 AI-based Autism Screening using Machine Learning (XGBoost + SHAP)
+
+This project presents a machine learning-based autism screening tool designed to assist in the early detection of Autism Spectrum Disorder (ASD) using publicly available datasets, the AQ-10 questionnaire, and an explainable AI (XAI) interface powered by SHAP.
+
+---
+
+## 📌 Project Overview
+
+Early and accurate screening of Autism Spectrum Disorder (ASD) is crucial for timely intervention. In this project, we built a predictive model using the XGBoost algorithm to identify individuals at risk of autism based on both questionnaire responses and demographic/medical attributes.
+
+The system also integrates SHAP (SHapley Additive exPlanations) to provide transparent and interpretable predictions to aid clinical understanding and trust.
+
+---
+
+## 📁 Contents
+
+| File/Folder            | Description |
+|------------------------|-------------|
+| `AI Powered Autism Prediction.ipynb` | Main Colab notebook with model training, feature selection, and SHAP explanations |
+| `shap_result.html`     | Saved SHAP explanation plot for sample prediction |
+| `dataset.csv`          | Cleaned and merged dataset from multiple ASD-related sources |
+| `demo.mp4`             | Video demonstration of the FastAPI web interface |
+| `questionnaire.py`     | FastAPI server script for real-time prediction |
+| `README.md`            | Project overview and documentation |
+
+---
+
+## 📊 Dataset and Preprocessing
+
+We combined multiple ASD screening datasets and applied the following preprocessing steps:
+- Removal of invalid and missing values
+- Feature selection using **Entropy and Information Gain**
+- Final selection of **15 key features**
+- Normalization of numerical variables and encoding of categorical ones
+
+---
+
+## 🤖 Machine Learning Models
+
+Several ML models were trained and evaluated, including:
+- K-Nearest Neighbors
+- Naive Bayes
+- Decision Tree
+- Random Forest
+- Logistic Regression
+- **XGBoost (Best performing model)**
+
+| Model               | Accuracy | Precision | Recall |
+|--------------------|----------|-----------|--------|
+| XGBoost            | 0.8969   | 0.7738    | 0.8553 |
+| Random Forest      | 0.8935   | 0.7711    | 0.8421 |
+| Logistic Regression| 0.8832   | 0.7625    | 0.8026 |
+
+---
+
+## 📈 SHAP-Based Explainability
+
+We used **SHAP** to provide model explainability, visualizing how different features contribute to the final prediction. The output `shap_result.html` includes:
+- Force plot for individual prediction
+- Global feature importance
+
+This improves trust in the AI model by offering transparency to clinicians and users.
+
+---
+
+## 🌐 FastAPI Interface (Optional Web Deployment)
+
+The system includes a simple FastAPI-powered web interface with:
+- AQ-10 questionnaire form
+- Prediction result screen
+- SHAP graph viewer for explanation
+
+To run locally:
+uvicorn uestionnaire:app --reload
